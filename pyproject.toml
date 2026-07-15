@@ -1,6 +1,9 @@
 [project]
 name = "riggit"
 version = "0.1.0"
+authors = [
+    { name = "Ammar Hamady"}
+]
 description = "A git convention checker CLI: validates commit messages against Conventional Commits format."
 readme = "README.md"
 requires-python = ">=3.9"
