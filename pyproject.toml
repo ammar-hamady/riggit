@@ -1,8 +1,8 @@
 [project]
 name = "riggit"
-version = "0.1.0"
+version = "0.1.6"
 authors = [
-    { name = "Ammar Hamady"}
+    { name = "Ammar Hamady", email = "ammar.hamady007@gmail.com"}
 ]
 description = "A git convention checker CLI: validates commit messages against Conventional Commits format."
 readme = "README.md"
@@ -15,8 +15,9 @@ dependencies = [
 riggit = "riggit.cli:main"
 
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=68,<70.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+include = ["riggit*"]
