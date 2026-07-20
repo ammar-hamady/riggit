@@ -36,6 +36,7 @@ riggit --help
    ```bash
    riggit install
    ```
+## overview
 
 ## Command reference
 
@@ -43,13 +44,25 @@ riggit --help
 
 Validate a commit message against the active convention.
 
+To lint the last commit message (HEAD):
+
+```bash
+riggit lint
+```
+
+Can alter the format of the lint output (default is text, alternative is json):
+```bash
+riggit lint --format json
+```
+
+To lint inline messages or read from a text file:
 ```bash
 riggit lint -m "fix(api): handle timeout"
-riggit lint --message-file .git/COMMIT_EDITMSG
+riggit lint --message-file example.txt
 ```
 
 Options:
-- `--message` / `-m`: validate a supplied string
+- `--message` / `-m`: validate inline message
 - `--message-file`: read the message from a file
 - `--repo PATH`: operate on a different repository
 - `--format text|json`: choose text or JSON output
@@ -65,6 +78,8 @@ riggit install
 riggit uninstall
 ```
 
+The installed hook will mean that when a commit is attempted the message is linted and the commit only proceeds if the message is 'valid'.
+
 Use `--force` to overwrite an existing hook file.
 
 ### init
@@ -75,6 +90,7 @@ Create a default `.riggitrc` file in the current repository.
 riggit init
 riggit init --force
 ```
+`.riggitrc` files are discussed in more detail later
 
 ### scan
 
@@ -86,7 +102,9 @@ riggit scan --since HEAD~10 --until HEAD
 riggit scan --fix --force
 ```
 
-Use `--fix` to attempt simple automatic rewrites such as lowercasing the description or removing a trailing period. The `--force` flag applies the rewrite to history.
+Use `--fix` to attempt simple automatic rewrites such as lowercasing the description or removing a trailing period. 
+
+The `--force` flag applies the rewrite to history.
 
 ### stats
 
@@ -118,15 +136,23 @@ riggit hook --uninstall --global
 
 View or change configuration values.
 
+To view current config:
+
 ```bash
 riggit config --list
 riggit config types
+```
+
+To alter config values:
+```bash
 riggit config types "feat,fix,docs,chore"
 riggit config scope_required true
 riggit config max_header_length 120
 riggit config description_case any
 riggit config no_trailing_period false
 ```
+
+Allows you to edit local or global configuration (stored in .riggitrc) of conventional commits without diving into file
 
 Use `--global` to edit the global config instead of the local repository config.
 
