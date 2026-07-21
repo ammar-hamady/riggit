@@ -5,10 +5,17 @@ It validates commit messages against a Conventional Commits-style format, suppor
 
 ## Installation
 
-From a local checkout:
+Download with pip:
 
 ```bash
-python -m pip install -e .
+pip install riggit
+```
+
+Or for Debian:
+
+```bash
+sudo apt install pipx
+pipx install riggit
 ```
 
 To verify the CLI is available:
@@ -24,6 +31,7 @@ riggit --help
    ```bash
    riggit init
    ```
+(Even if you dont run init, the default convention stays the same)
 
 2. Lint a message directly:
 
@@ -36,7 +44,6 @@ riggit --help
    ```bash
    riggit install
    ```
-## overview
 
 ## Command reference
 
